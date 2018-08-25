@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Slab';
+}
+
+.style__students_div___3KSR2 .ant-btn-primary {
+  color: #fff;
+  background-color: #44b38c !important;
+  border-color: #44b38c !important;
+}
+
+.style__profile___1L80s .ant-btn-primary {
+  color: #fff;
+  background-color: #44b38c !important;
+  border-color: #44b38c !important;
+}
+
+.style__students_div___3KSR2 .ant-table table {
+  background-color: #ffffff !important;
+}
+
+.style__students_div___3KSR2 .ant-radio-group {
+  margin-right: 40%;
+}
+
+.ant-form-item {
+  margin-bottom: 10px !important;
+}
+
+.ant-checkbox {
+  margin-right: 300px !important;
+}
+
+.ant-radio-group {
+  margin-right: 130px !important;
+}
+
+.vertical-center-modal {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ant-modal {
+  top: 0 !important;
+}
+
+.ant-modal-body {
+  max-height: 75vh !important;
+  overflow-y: auto !important;
+}
