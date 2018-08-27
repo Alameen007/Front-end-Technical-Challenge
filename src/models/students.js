@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
-import { getTasks, getStudents, deleteStudent, updateStudent, createStudent } from '../services/students'
+import { getTasks, getStudents, getStudentById, deleteStudent, updateStudent, createStudent } from '../services/students'
 
 export default {
   namespace: 'students',
@@ -89,6 +89,24 @@ export default {
         yield put({ type: 'query' })
       } else {
         message.error('Student can not be deleted')
+      }
+    },
+
+    *getStudentById (payload, { select, call, put }) {
+      const { id } = payload
+      const response = yield call(getStudentById, id)
+      console.log(response)
+
+      const { success, raw } = response
+      if (success) {
+        yield put({
+          type: 'save',
+          payload: {
+            info: raw,
+          },
+        })
+      } else {
+        message.error(response.message)
       }
     },
 

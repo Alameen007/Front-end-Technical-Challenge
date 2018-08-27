@@ -1,8 +1,5 @@
 import { request, baseUrl } from '../utils'
 
-const storage = localStorage.getItem('user')
-const user = JSON.parse(storage)
-
 
 export async function getStudents () {
   const url = `${baseUrl}/students/0/20`
@@ -11,17 +8,19 @@ export async function getStudents () {
     method: 'get',
   })
 }
-export async function getTasks () {
-  const url = `${baseUrl}/tasks/${user._id}`
+
+export async function getStudentById (id) {
+  const url = `${baseUrl}/students/basic-info?student-id=${id}`
   return request({
     url,
     method: 'get',
   })
 }
 
+
 export async function createStudent (params) {
   return request({
-    url: `${baseUrl}/student`,
+    url: `${baseUrl}/students`,
     method: 'post',
     data: params,
   })
@@ -29,7 +28,7 @@ export async function createStudent (params) {
 
 export async function updateStudent (id, params) {
   return request({
-    url: `${baseUrl}/student/${id}`,
+    url: `${baseUrl}/students/${id}`,
     method: 'put',
     data: params,
   })
@@ -37,7 +36,7 @@ export async function updateStudent (id, params) {
 
 export async function deleteStudent (id) {
   return request({
-    url: `${baseUrl}/basic-info?student_id=${id}`,
+    url: `${baseUrl}/basic-info?student-id=${id}`,
     method: 'delete',
   })
 }

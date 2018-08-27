@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'dva'
-import { BackTop } from 'antd'
 import { Link } from 'dva/router'
 import styles from './IndexPage.css'
 
 function IndexPage () {
   return (
     <div>
-    Front-end Technical Challenge
+      <h1 style={{ textAlign: 'center', marginTop: '200px' }}>Landing page</h1>
+      <Link to="/login"><p style={{ textAlign: 'center' }}>Login as Admin</p></Link>
     </div>
 
 

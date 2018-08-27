@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'dva'
 import moment from 'moment'
 import { Button, Row, Col, Tabs, message, Upload } from 'antd'
 import { Link } from 'dva/router'
@@ -30,16 +31,16 @@ export class StudentBioData extends React.Component {
     }
 
     getImageBase64(file, imageUrl => {
-      const { activeQuestion } = this.props.questions
+      const { info } = this.props
 
-      activeQuestion.image = imageUrl.substring(22)
+      info.photoUrl = imageUrl
       const payload = {
-        activeQuestion,
+        info,
       }
-      this.props.dispatch({ type: 'questions/generalReducer', payload })
+      this.props.dispatch({ type: 'students/save', payload })
     })
 
-    return false // we dont want to upload the file
+    return false
   }
 
 
@@ -59,14 +60,14 @@ export class StudentBioData extends React.Component {
     if (info.addressState === undefined) {
       info.addressState = {}
     }
-    
+  
     const dob = `${moment(info.dob)._d.getDay() + 1}-${moment(info.dob)._d.getMonth() + 1}-${moment(info.dob)._d.getFullYear()}`
     return (
       <div className={styles.studentBio}>
         <div className={styles.profile_pic}>
           {
-          (this.props.info.image === undefined || this.props.info.image === '') ?
-            <img src={person} alt="" /> : <img src={this.props.info.image} alt="" />
+          (this.props.info.photoUrl === undefined || this.props.info.photoUrl === '') ?
+            <img src={person} alt="" /> : <img src={this.props.info.photoUrl} alt="" />
          }
           <Upload
             className="avatar-uploader"
@@ -203,4 +204,4 @@ export class StudentBioData extends React.Component {
   }
 }
 
-export default StudentBioData
+export default connect(({ students }) => ({ students }))(StudentBioData)

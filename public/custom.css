@@ -24,6 +24,12 @@ h6 {
   border-color: #44b38c !important;
 }
 
+.style__login_form___1tSXZ .ant-btn-primary {
+  color: #fff;
+  background-color: #44b38c !important;
+  border-color: #44b38c !important;
+}
+
 .style__students_div___3KSR2 .ant-table table {
   background-color: #ffffff !important;
 }
@@ -36,9 +42,9 @@ h6 {
   margin-bottom: 10px !important;
 }
 
-.ant-checkbox {
+/* .ant-checkbox {
   margin-right: 300px !important;
-}
+} */
 
 .ant-radio-group {
   margin-right: 130px !important;
@@ -57,4 +63,12 @@ h6 {
 .ant-modal-body {
   max-height: 75vh !important;
   overflow-y: auto !important;
+}
+
+.ant-tabs-ink-bar {
+  background-color: #44b38c !important;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: #44b38c !important;
 }

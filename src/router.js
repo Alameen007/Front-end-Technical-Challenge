@@ -15,7 +15,7 @@ function RouterConfig ({ history, app }) {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/sfsdf" exact component={IndexPage} />
+        <Route path="/" exact component={IndexPage} />
         <Route path="/login"
           children={({ match, ...rest }) => {
           registerModel(app, require('./models/login').default)

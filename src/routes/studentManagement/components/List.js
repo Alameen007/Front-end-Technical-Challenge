@@ -25,6 +25,7 @@ export class List extends React.Component {
       'id',
       'firstName',
       'lastName',
+      'sessionOfAdmission',
     ])
     this.setState({
       searchToken: e.target.value,

@@ -16,7 +16,7 @@ const Step = Steps.Step
 class modal extends Component {
   constructor (props) {
     super(props)
-    this.state = { 
+    this.state = {
       current: 0,
     }
   }
@@ -46,66 +46,11 @@ class modal extends Component {
       item = {}, onOk, onCancel, okText, ...modalProps
     } = this.props
     const handleOk = () => {
-      // const {
-      //   account_handler_department,
-      //   account_handler_division,
-      //   account_handler_person,
-      //   building_no,
-      //   city,
-      //   company_name,
-      //   country,
-      //   credit_limit,
-      //   credit_terms,
-      //   email,
-      //   email2,
-      //   fax,
-      //   industry,
-      //   landline,
-      //   landline2,
-      //   liebherr_client,
-      //   mobile,
-      //   mobile2,
-      //   office_type,
-      //   payment_history,
-      //   prefered_comm,
-      //   reference,
-      //   service_contract,
-      //   spare_part_provider,
-      //   state,
-      //   status,
-      //   street,
-      //   website,
-      // } = this.props.item
+      console.log(this.props.item)
+      // const { } = this.props.item
 
       // const data = {
-      //   account_handler_department,
-      //   account_handler_division,
-      //   account_handler_person,
-      //   building_no,
-      //   city,
-      //   company_name,
-      //   country,
-      //   credit_limit,
-      //   credit_terms,
-      //   email,
-      //   email2,
-      //   fax,
-      //   industry,
-      //   landline,
-      //   landline2,
-      //   liebherr_client,
-      //   mobile,
-      //   mobile2,
-      //   office_type,
-      //   payment_history,
-      //   prefered_comm,
-      //   reference,
-      //   service_contract,
-      //   spare_part_provider,
-      //   state,
-      //   status,
-      //   street,
-      //   website,
+
       // }
 
       // onOk(data)
@@ -155,7 +100,7 @@ class modal extends Component {
           <div key="stepper">
             {this.state.current > 0 && (
             <Button
-              style={{ 
+              style={{
                 marginLeft: 8,
               }}
               onClick={() => this.prev()}

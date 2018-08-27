@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'dva'
 import moment from 'moment'
 import { Button, Row, Col, Tabs } from 'antd'
 import { Link } from 'dva/router'
@@ -17,27 +18,29 @@ export class Profile extends React.Component {
     }
   }
 
+  componentDidMount () {
+    const id = window.location.hash.substring(10)
+
+    this.props.dispatch({ type: 'students/getStudentById', id })
+  }
+
 
   render () {
     const {
       onUpdate, modalVisible, info, ...modalProps
     } = this.props
+    const fullName = `${info.firstName} ${info.lastName} ${info.otherNames}`
     const sessionDate = `${moment(info.dateOfAdmission)._d.getDay() + 1}-${moment(info.dateOfAdmission)._d.getMonth() + 1}-${moment(info.dateOfAdmission)._d.getFullYear()}`
-    console.log(this.props)
     return (
       <div className={styles.profile}>
         <Row>
-          <Col style={{ marginBottom: '16px' }}>
+          <Col>
             <Row>
               <Col span={12}>
-                <h2 className={styles.student_fullName}>{`${info.fullName} - ${info.studentId}`}</h2>
-                <p className={styles.session}>{`${info.sessionOfAdmission.sessionId} (${sessionDate})`}</p>
+                <h2 className={styles.student_fullName}>{`${fullName.toUpperCase()} - ${info.studentId}`}</h2>
+                <p className={styles.session}><span style={{ fontWeight: 'bold' }}>Session:</span> {`${info.sessionOfAdmission} (${sessionDate})`}</p>
               </Col>
-              <Col span={4} offset={8} style={{ textAlign: 'right' }}>
-                <Button onClick={onUpdate} size="large" type="primary" icon="edit">
-              Edit Student
-                </Button>
-              </Col>
+              <Col span={4} offset={8} style={{ textAlign: 'right' }} />
             </Row>
           </Col>
         </Row>
@@ -50,16 +53,16 @@ export class Profile extends React.Component {
             <StudentBio info={info} />
           </TabPane>
           <TabPane tab="Father's Info" key="2">
-            skjdhfdskh
+            Coming Soon
           </TabPane>
           <TabPane tab="Mother's Info" key="3">
-            skjdhfdskh
+          Coming Soon
           </TabPane>
           <TabPane tab="Guardin's Info" key="4">
-            skjdhfdskh
+          Coming Soon
           </TabPane>
           <TabPane tab="Medical Information" key="5">
-            skjdhfdskh
+          Coming Soon
           </TabPane>
 
         </Tabs>
@@ -69,4 +72,4 @@ export class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default connect(({ students }) => ({ students }))(Profile)

@@ -223,27 +223,27 @@ rules: [
   },
 ],
 })(<Select placeholder="Select Session" onChange={handleSessionOfAdmission}>
-  <Option value="NIGERIA">NIGERIA</Option>
-  <Option value="BENIN">BENIN</Option>
-  <Option value="TOGO">TOGO</Option>
-  <Option value="AUSTRIA">AUSTRIA</Option>
-  <Option value="GERMANY">GERMANY</Option>
-  <Option value="SOUTH AFRICA">SOUTH AFRICA</Option>
-  <Option value="FRANCE">FRANCE</Option>
-  <Option value="SPAIN">SPAIN</Option>
-  <Option value="CAMEROON">CAMEROON</Option>
-  <Option value="ANGOLA">ANGOLA</Option>
-  <Option value="COTE D'IVOIRE">COTE D'IVOIRE</Option>
-  <Option value="GHANA">GHANA</Option>
-  <Option value="LIBERIA">LIBERIA</Option>
-  <Option value="MOZAMBIQUE">MOZAMBIQUE</Option>
-  <Option value="SIERRA LEONE">SIERRA LEONE</Option>
-  <Option value="GUINEA">GUINEA</Option>
-  <Option value="GUINEA-BISSAU">GUINEA-BISSAU</Option>
-  <Option value="SENEGAL">SENEGAL</Option>
-  <Option value="GABON">GABON</Option>
-  <Option value="EQUATORIAL-GUINEA">EQUATORIAL-GUINEA</Option>
-  <Option value="REPUBLIC OF THE CONGO">REPUBLIC OF THE CONGO</Option>
+  <Option value="2005/2006">2005/2006</Option>
+  <Option value="2006/2007">2006/2007</Option>
+  <Option value="2007/2008">2007/2008</Option>
+  <Option value="2008/2009">2008/2009</Option>
+  <Option value="2009/2010">2009/2010</Option>
+  <Option value="2010/2011">2010/2011</Option>
+  <Option value="2011/2012">2011/2012</Option>
+  <Option value="2012/2013">2012/2013</Option>
+  <Option value="2013/2014">2013/2014</Option>
+  <Option value="2014/2015">2014/2015</Option>
+  <Option value="2015/2016">2015/2016</Option>
+  <Option value="2016/2017">2016/2017</Option>
+  <Option value="2017/2018">2017/2018</Option>
+  <Option value="2018/2019">2018/2019</Option>
+  <Option value="2019/2020">2019/2020</Option>
+  <Option value="2020/2021">2020/2021</Option>
+  <Option value="2021/2022">2021/2022</Option>
+  <Option value="2022/2023">2022/2023</Option>
+  <Option value="2023/2024">2023/2024</Option>
+  <Option value="2024/2025">2024/2025</Option>
+  <Option value="2025/2026">2025/2026</Option>
 </Select>)}
           </FormItem>
         </Col>
@@ -364,42 +364,7 @@ rules: [
   rules: [
   ],
 })(<Select placeholder="Select LGA" onChange={handleLGA} >
-  <Option value="ABIA">ABIA</Option>
-  <Option value="ADAMAWA">ADAMAWA</Option>
-  <Option value="AKWA IBOM">AKWA IBOM</Option>
-  <Option value="ANAMBRA">ANAMBRA</Option>
-  <Option value="BAUCHI">BAUCHI</Option>
-  <Option value="BAYELSA">BAYELSA</Option>
-  <Option value="BENUE">BENUE</Option>
-  <Option value="BORNO">BORNO</Option>
-  <Option value="CROSS RIVER">CROSS RIVER</Option>
-  <Option value="DELTA">DELTA</Option>
-  <Option value="EBONYI">EBONYI</Option>
-  <Option value="EDO">EDO</Option>
-  <Option value="EKITI">EKITI</Option>
-  <Option value="ENUGU">ENUGU</Option>
-  <Option value="GOMBE">GOMBE</Option>
-  <Option value="IMO">IMO</Option>
-  <Option value="JIGAWA">JIGAWA</Option>
-  <Option value="KADUNA">KADUNA</Option>
-  <Option value="KANO">KANO</Option>
-  <Option value="KATSINA">KATSINA</Option>
-  <Option value="KEBBI">KEBBI</Option>
-  <Option value="KOGI">KOGI</Option>
-  <Option value="KWARA">KWARA</Option>
-  <Option value="LAGOS">LAGOS</Option>
-  <Option value="NASSARAWA">NASSARAWA</Option>
-  <Option value="NIGER">NIGER</Option>
-  <Option value="OGUN">OGUN</Option>
-  <Option value="ONDO">ONDO</Option>
-  <Option value="OSUN">OSUN</Option>
-  <Option value="OYO">OYO</Option>
-  <Option value="PLATEAU">PLATEAU</Option>
-  <Option value="RIVERS">RIVERS</Option>
-  <Option value="SOKOTO">SOKOTO</Option>
-  <Option value="TARABA">TARABA</Option>
-  <Option value="YOBE">YOBE</Option>
-  <Option value="ZAMFARA">ZAMFARA</Option>
+  <Option value="ABIA">loading...</Option>
 </Select>)}
           </FormItem>
         </Col>
