@@ -33,7 +33,7 @@ export class StudentBioData extends React.Component {
     getImageBase64(file, imageUrl => {
       const { info } = this.props
 
-      info.photoUrl = imageUrl
+      info.image = imageUrl
       const payload = {
         info,
       }
@@ -66,8 +66,8 @@ export class StudentBioData extends React.Component {
       <div className={styles.studentBio}>
         <div className={styles.profile_pic}>
           {
-          (this.props.info.photoUrl === undefined || this.props.info.photoUrl === '') ?
-            <img src={person} alt="" /> : <img src={this.props.info.photoUrl} alt="" />
+          (this.props.info.image === undefined || this.props.info.image === '') ?
+            <img src={person} alt="" /> : <img src={this.props.info.image} alt="" />
          }
           <Upload
             className="avatar-uploader"

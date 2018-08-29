@@ -17,9 +17,7 @@ const Students = ({
     modalVisible,
     modalType,
     currentItem,
-    // pagination,
   } = students
-  // const { pageSize } = pagination
   const modalProps = {
     item: currentItem,
     visible: modalVisible,
@@ -54,8 +52,9 @@ const Students = ({
       })
     },
     profilePage (item) {
+      localStorage.setItem('currentStudent', JSON.stringify(item))
       dispatch({
-        type: 'students/save',
+        type: 'students/save', 
         payload: {
           info: item,
           currentItem: item,

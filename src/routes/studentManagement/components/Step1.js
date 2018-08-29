@@ -175,12 +175,18 @@ const step1 = ({
     dispatch({ type: 'students/save', payload })
   }
 
-  const dateFormat = 'DD-MM-YYYY'
+  const dateFormat = 'D-M-YYYY'
+  let dob
   if (currentItem.dob === undefined) {
-    currentItem.dob = moment(new Date()).format('DD-MM-YYYY')
+    dob = moment(new Date()).format('D-M-YYYY')
+  } else {
+    dob = `${moment(currentItem.dob)._d.getDay() + 1}-${moment(currentItem.dob)._d.getMonth() + 1}-${moment(currentItem.dob)._d.getFullYear()}`
   }
+  let sessionDate
   if (currentItem.dateOfAdmission === undefined) {
-    currentItem.dateOfAdmission = moment(new Date()).format('DD-MM-YYYY')
+    sessionDate = moment(new Date()).format('D-M-YYYY')
+  } else {
+    sessionDate = `${moment(currentItem.dateOfAdmission)._d.getDay() + 1}-${moment(currentItem.dateOfAdmission)._d.getMonth() + 1}-${moment(currentItem.dateOfAdmission)._d.getFullYear()}`
   }
 
   if (currentItem.country1Nationality === undefined) {
@@ -194,7 +200,6 @@ const step1 = ({
       },
     }
   }
-
 
   return (
     <div>
@@ -267,7 +272,7 @@ rules: [
         <Col span={12}>
           <FormItem label="Date of Admission" hasFeedback>
             {getFieldDecorator('dateOfAdmission', {
-        initialValue: moment(currentItem.dateOfAdmission, 'DD-MM-YYYY'),
+        initialValue: moment(sessionDate, 'D-M-YYYY'),
   rules: [
     {
       required: true,
@@ -398,7 +403,7 @@ rules: [
         <Col span={12}>
           <FormItem label="Date of Birth" hasFeedback>
             {getFieldDecorator('dob', {
-            initialValue: moment(currentItem.dob, 'DD-MM-YYYY'),
+            initialValue: moment(dob, 'D-M-YYYY'),
       rules: [
         {
           required: true,

@@ -18,10 +18,22 @@ export class Profile extends React.Component {
     }
   }
 
-  componentDidMount () {
-    const id = window.location.hash.substring(10)
+  componentWillMount () {
+    // const id = window.location.hash.substring(10)
 
-    this.props.dispatch({ type: 'students/getStudentById', id })
+    const curStudent = localStorage.getItem('currentStudent')
+    const currentStudent = JSON.parse(curStudent)
+
+    let { info, currentItem } = this.props.students
+
+    currentItem = currentStudent
+    info = currentStudent
+    const payload = {
+      currentItem,
+      info,
+    }
+
+    this.props.dispatch({ type: 'students/save', payload })
   }
 
 
@@ -29,7 +41,15 @@ export class Profile extends React.Component {
     const {
       onUpdate, modalVisible, info, ...modalProps
     } = this.props
-    const fullName = `${info.firstName} ${info.lastName} ${info.otherNames}`
+
+    if (info.sessionOfAdmission === undefined) {
+      info.sessionOfAdmission = {}
+    }
+
+    if (info.fullName === undefined) {
+      info.fullName = ''
+    }
+
     const sessionDate = `${moment(info.dateOfAdmission)._d.getDay() + 1}-${moment(info.dateOfAdmission)._d.getMonth() + 1}-${moment(info.dateOfAdmission)._d.getFullYear()}`
     return (
       <div className={styles.profile}>
@@ -37,10 +57,14 @@ export class Profile extends React.Component {
           <Col>
             <Row>
               <Col span={12}>
-                <h2 className={styles.student_fullName}>{`${fullName.toUpperCase()} - ${info.studentId}`}</h2>
-                <p className={styles.session}><span style={{ fontWeight: 'bold' }}>Session:</span> {`${info.sessionOfAdmission} (${sessionDate})`}</p>
+                <h2 className={styles.student_fullName}>{`${info.fullName.toUpperCase()} - ${info.studentId}`}</h2>
+                <p className={styles.session}><span style={{ fontWeight: 'bold' }}>Session:</span> {`${info.sessionOfAdmission.sessionId} (${sessionDate})`}</p>
               </Col>
-              <Col span={4} offset={8} style={{ textAlign: 'right' }} />
+              <Col span={4} offset={8} style={{ textAlign: 'right' }}>
+                <Button onClick={onUpdate} size="large" type="primary" icon="edit">
+                  Edit Student
+                </Button>
+              </Col>
             </Row>
           </Col>
         </Row>
