@@ -22,7 +22,7 @@ export class List extends React.Component {
 
   handleSearch = (e) => {
     const filteredList = search(this.props.dataSource, e.target.value, [
-      'id',
+      'studentId',
       'firstName',
       'lastName',
       'sessionOfAdmission',

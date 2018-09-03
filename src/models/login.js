@@ -35,14 +35,22 @@ export default {
       const { admin } = payload
       const response = yield call(login, admin)
       yield put({ type: 'hideLoginLoading' })
-      const { raw } = response
-      console.log(response)
-      if (raw.user) {
+      const { raw, success } = response
+      if (success) {
         localStorage.setItem('token', raw.token)
         localStorage.setItem('user', JSON.stringify(raw.user))
         yield put(routerRedux.push('/students'))
       } else {
-        message.error(message)
+        message.error(response.message)
+      }
+    },
+
+    *checkToken (paylod, { put }) {
+      const { token } = paylod
+
+      if (token !== '') {
+        console.log('token is available')
+        yield put(routerRedux.push('/students'))
       }
     },
   },

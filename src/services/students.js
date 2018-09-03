@@ -2,7 +2,7 @@ import { request, baseUrl } from '../utils'
 
 
 export async function getStudents () {
-  const url = `${baseUrl}/students/0/20`
+  const url = `${baseUrl}/students/0/30`
   return request({
     url,
     method: 'get',

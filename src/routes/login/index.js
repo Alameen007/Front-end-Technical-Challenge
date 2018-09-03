@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 import { Button, Row, Form, Input, Tabs, Icon, Col, Checkbox } from 'antd'
 import styles from './style.css'
@@ -16,6 +17,12 @@ class Login extends React.Component {
     this.state = {
 
     }
+  }
+
+  componentDidMount () {
+    const token = localStorage.getItem('token')
+
+    this.props.dispatch({ type: 'login/checkToken', token })
   }
 
   handleSubmit = () => {
