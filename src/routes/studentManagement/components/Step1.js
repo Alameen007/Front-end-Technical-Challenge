@@ -18,13 +18,11 @@ const formItemLayout = {
   },
 }
 
-const step1 = ({ 
+const step1 = ({
   currentItem,
   dispatch,
   form: { getFieldDecorator },
 }) => {
-  console.log(currentItem)
-
   const handleStudentId = (event) => {
     const { target } = event
     const { value } = target
@@ -69,7 +67,9 @@ const step1 = ({
   }
 
   const handledateOfAdmissionChange = (date, dateStrings) => {
-    currentItem.dateOfAdmission = dateStrings
+    const short = moment.unix(date._d)
+    
+    currentItem.dateOfAdmission = 1028502000000
     const payload = {
       currentItem,
     }
@@ -78,7 +78,10 @@ const step1 = ({
   }
 
   const handleDateofBirthChange = (date, dateStrings) => {
-    currentItem.dob = dateStrings
+    const short = moment.unix(date._d)
+    console.log(1028502000000)
+    console.log(short._i)
+    currentItem.dob = 1028502000000
     const payload = {
       currentItem,
     }
@@ -189,17 +192,17 @@ const step1 = ({
     sessionDate = `${moment(currentItem.dateOfAdmission)._d.getDay() + 1}-${moment(currentItem.dateOfAdmission)._d.getMonth() + 1}-${moment(currentItem.dateOfAdmission)._d.getFullYear()}`
   }
 
-  if (currentItem.country1Nationality === undefined) {
-    currentItem.country1Nationality = {}
-  }
+  // if (currentItem.country1Nationality === undefined) {
+  //   currentItem.country1Nationality = {}
+  // }
 
-  if (currentItem.lga === undefined) {
-    currentItem.lga = {
-      state: {
+  // if (currentItem.lga === undefined) {
+  //   currentItem.lga = {
+  //     state: {
 
-      },
-    }
-  }
+  //     },
+  //   }
+  // }
 
   return (
     <div>
@@ -301,7 +304,7 @@ rules: [
         <Col span={12}>
           <FormItem label="State Of Origin" hasFeedback>
             {getFieldDecorator('state', {
-            initialValue: currentItem.lga.state.stateId || '',
+            // initialValue: currentItem.lga.state.stateId || '',
       rules: [
       ],
     })(<Select placeholder="Select State" onChange={handleState} >
@@ -365,7 +368,7 @@ rules: [
         <Col span={12}>
           <FormItem label="LGA Of Origin" hasFeedback>
             {getFieldDecorator('lga', {
-        initialValue: currentItem.lga.lgaName || '',
+        // initialValue: currentItem.lga.lgaName || '',
   rules: [
   ],
 })(<Select placeholder="Select LGA" onChange={handleLGA} >
@@ -428,7 +431,7 @@ rules: [
         <Col span={12}>
           <FormItem label="Nationality 1" hasFeedback>
             {getFieldDecorator('countryName', {
-            initialValue: currentItem.country1Nationality.countryName || '',
+            // initialValue: currentItem.country1Nationality.countryName || '',
   rules: [
   ],
 })(<Select placeholder="Select country" onChange={handleNationality1}>

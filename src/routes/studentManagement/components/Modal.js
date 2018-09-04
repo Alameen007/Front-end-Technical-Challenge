@@ -53,7 +53,7 @@ class modal extends Component {
 
       // }
 
-      // onOk(data)
+      onOk(this.props.item)
     }
 
     const steps = [

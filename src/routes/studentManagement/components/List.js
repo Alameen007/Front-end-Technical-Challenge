@@ -9,32 +9,36 @@ export class List extends React.Component {
     super(props)
     this.state = {
       filteredList: this.props.dataSource,
-      searchToken: '',
     }
   }
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      searchToken: '',
       filteredList: nextProps.dataSource,
     })
   }
 
   handleSearch = (e) => {
-    const filteredList = search(this.props.dataSource, e.target.value, [
-      'studentId',
-      'firstName',
-      'lastName',
-      'sessionOfAdmission',
-    ])
-    this.setState({
-      searchToken: e.target.value,
-      filteredList,
+    this.props.dispatch({
+      type: 'students/save',
+      payload: { searchToken: e.target.value },
     })
-  };
+    const value = e.target.value
+
+    if (value === '') {
+      this.props.dispatch({
+        type: 'students/query',
+      })
+    } else {
+      this.props.dispatch({
+        type: 'students/searchedStudents',
+        value,
+      })
+    }
+  }
 
   render () {
-    const { filteredList, searchToken } = this.state
+    const { filteredList } = this.state
     const {
       onUpdate,
       onDeleteItem,
@@ -43,6 +47,9 @@ export class List extends React.Component {
       pagination,
       location,
       profilePage,
+      searchToken,
+      tableLoading,
+      dataSource,
     } = this.props
     const columns = [
       {
@@ -147,9 +154,9 @@ export class List extends React.Component {
         </Row>
         <Table
           pagination
-          loading={loading}
+          loading={tableLoading}
           location={location}
-          dataSource={filteredList}
+          dataSource={dataSource}
           size="middle"
           columns={columns}
           rowKey={record => record.studentId}

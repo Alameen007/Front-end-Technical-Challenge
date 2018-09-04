@@ -60,7 +60,7 @@ const step2 = ({
   const handleBoarding = (event) => {
     const { target } = event
     const { value } = target
-    currentItem.boarding = value
+    currentItem.boarding = 0
     const payload = {
       currentItem,
     }

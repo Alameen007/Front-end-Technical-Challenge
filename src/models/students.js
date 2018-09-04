@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
-import { getTasks, getStudents, getStudentById, deleteStudent, updateStudent, createStudent } from '../services/students'
+import { getTasks, getStudents, getStudentById, deleteStudent, updateStudent, createStudent, searchedStudents } from '../services/students'
 
 export default {
   namespace: 'students',
@@ -10,6 +10,8 @@ export default {
     currentItem: {},
     info: {},
     modalVisible: false,
+    searchToken: '',
+    tableLoading: false,
 
   },
 
@@ -58,9 +60,40 @@ export default {
       }
     },
 
+    *searchedStudents (payload, { call, put, select }) {
+      const { value } = payload
+      let searchToken = yield select(({ students }) => students.searchToken)
+      if (searchToken.length < 1) {
+        searchToken = value
+      }
+      const data = {
+        searchToken,
+      }
+      yield put({
+        type: 'save',
+        payload: { tableLoading: true },
+      })
+      const response = yield call(searchedStudents, data)
+      yield put({
+        type: 'save',
+        payload: { tableLoading: false },
+      })
+      const { success, raw } = response
+
+      if (success) {
+        yield put({
+          type: 'save',
+          payload: {
+            list: raw,
+          },
+        })
+      } else {
+        message.error(response.message)
+      }
+    },
+
     * create ({ payload }, { call, put }) {
       const data = yield call(createStudent, payload)
-      console.log(payload)
       if (data.success) {
         yield put({ type: 'hideModal' })
         yield put({ type: 'query' })
@@ -74,6 +107,12 @@ export default {
       const id = yield select(({ students }) => students.currentItem.studentId)
       const data = yield call(updateStudent, id, payload)
       if (data.success) {
+        yield put({
+          type: 'save',
+          payload: {
+            currentItem: data.raw,
+          },
+        })
         yield put({ type: 'hideModal' })
         yield put({ type: 'query' })
         message.success('Student updated successfully')

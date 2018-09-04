@@ -17,6 +17,8 @@ const Students = ({
     modalVisible,
     modalType,
     currentItem,
+    searchToken,
+    tableLoading,
   } = students
   const modalProps = {
     item: currentItem,
@@ -40,7 +42,10 @@ const Students = ({
   }
   const listProps = {
     dataSource: list,
+    searchToken,
+    tableLoading,
     location,
+    dispatch,
     onUpdate (item) {
       dispatch({
         type: 'students/showModal',
@@ -86,12 +91,9 @@ const Students = ({
         payload: {
           modalType: 'create',
           currentItem: {
-            lga: {
-              state: {},
-            },
-            country1Nationality: {},
+            // country1Nationality: {},
             sessionOfAdmission: {},
-            addressState: {},
+            // addressState: {},
           },
         },
       })

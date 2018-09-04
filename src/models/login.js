@@ -37,9 +37,13 @@ export default {
       yield put({ type: 'hideLoginLoading' })
       const { raw, success } = response
       if (success) {
-        localStorage.setItem('token', raw.token)
-        localStorage.setItem('user', JSON.stringify(raw.user))
-        yield put(routerRedux.push('/students'))
+        if (raw.user.userType === 'STAFF') {
+          localStorage.setItem('token', raw.token)
+          localStorage.setItem('user', JSON.stringify(raw.user))
+          yield put(routerRedux.push('/students'))
+        } else {
+          message.error('Unauthorized')
+        }
       } else {
         message.error(response.message)
       }

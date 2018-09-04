@@ -98,9 +98,9 @@ const step2 = ({
     dispatch({ type: 'students/save', payload })
   }
 
-  if (currentItem.addressState === undefined) {
-    currentItem.addressState = {}
-  }
+  // if (currentItem.addressState === undefined) {
+  //   currentItem.addressState = {}
+  // }
 
   return (
     <div>
@@ -138,7 +138,7 @@ rules: [
         <Col span={12}>
           <FormItem label="State" hasFeedback>
             {getFieldDecorator('state', {
-    initialValue: currentItem.addressState.stateName,
+    // initialValue: currentItem.addressState.stateName,
   rules: [
   ],
   })(<Select placeholder="Select State" onChange={handleState}>
